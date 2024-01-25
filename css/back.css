@@ -74,46 +74,21 @@ color: #c2babac7;
     background-color: black;
   }
 
-  .like-outer{
-    width: 250px;
-    float: left;
-  }
-  .like-area{
-    width:100%;
-    float: left;
-  }
-  .like-area ul{
-    list-style: none;
-    margin: 0px
-  }
-  .like-area ul li{
-    display: inline-block;
-    margin: 0px 5px 0px 0px;
-  }
-  .like-area ul li a{
-    width: 100%;
-    padding: 10px;
-    font-size: 25px;
-    color: #000;
+  button{
     cursor: pointer;
-    float: left;
-    -webkit-user-select: none; /* Safari */      
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+    outline: 0;
+    color: #AAA;
+  
   }
-  .like-no{
-    font-size: 20px;
+  
+  .btn:focus {
+    outline: none;
   }
-  .like-area i{
-    float: left;
+  
+  .green{
+    color: green;
   }
-  .like-area .fas{
-    font-size: 0px;
-  }
-  .like-active .fas{
-   font-size: 25px;
-  }
-  .like-active .far{
-   font-size: 0px;
+  
+  .red{
+    color: red;
   }
