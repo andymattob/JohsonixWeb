@@ -1,20 +1,22 @@
-var btn1 = document.querySelector('#green');
-var btn2 = document.querySelector('#red');
+var color1 = document.getElementsByClassName('fa-thumbs-up')[0];
+var color2 = document.getElementsByClassName('fa-thumbs-down')[0];
 
-btn1.addEventListener('click', function() {
-  
-    if (btn2.classList.contains('red')) {
-      btn2.classList.remove('red');
-    } 
-  this.classList.toggle('green');
-  
-});
+function like() {
+  if(color1.style.color == "blue") {
+    color1.style.color = "black";
+  } else {
+    color1.style.color = "blue";
+  }
+  color2.style.color = "black";
+}
 
-btn2.addEventListener('click', function() {
-  
-    if (btn1.classList.contains('green')) {
-      btn1.classList.remove('green');
-    } 
-  this.classList.toggle('red');
-  
-});
+function dislike() {
+  if (color2.style.color == "blue") {
+    color2.style.color = "black";
+  } else {
+    color2.style.color = "blue";
+  }
+  color1.style.color = "black";
+}
+
+}

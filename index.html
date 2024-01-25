@@ -38,13 +38,15 @@
 
 <div class="front">
 <h1>Jämför produkter</h1>
-<h1>Please add your comment</h1>
+
+
+<h1>Kommentera produkt</h1>
 <div id="comment-container">
     <!-- Existing comments will go here -->
 </div>
 <textarea name="" id="new-comment" cols="60" rows="5"></textarea>
 <br>
-<button id="btn-post">Post</button>
+<button id="btn-post">Skicka</button>
 <script>
     // Step 1: Add an event listener to the "Post" button
 document.getElementById("btn-post").addEventListener("click", function () {
@@ -66,15 +68,8 @@ document.getElementById("btn-post").addEventListener("click", function () {
     document.getElementById("new-comment").value = "";
 });
 </script>
-
-
-<script src="js/like.js"></script>
-
-<button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
-<button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
-
 </div>
-
+</div>
 <h3>@Copyright 2023</h3>
 </body>
 </html>
