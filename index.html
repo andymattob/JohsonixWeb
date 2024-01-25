@@ -38,27 +38,54 @@
 
 <div class="front">
 <h1>Jämför produkter</h1>
-<div class="container">
-  <h2>Leave us a comment</h2>
-  <form>
-     <textarea id="" placeholder="Add Your Comment" value=" "></textarea>
-     <div class="btn">
-         <input id="submit" type="submit" value="Comment">
-         <button id="clear">  
-          &#128591;</button>
-     </div> 
-  </form>
+<h1>Please add your comment</h1>
+<div id="comment-container">
+    <!-- Existing comments will go here -->
 </div>
-<div class="comments">
-  <h2>Comments</h2>
-  <div id="comment-box" value="submit">
-  </div>
-</div>
-<!-- LikeBtn.com BEGIN -->
-<span class="likebtn-wrapper" data-theme="roundthumb" data-lang="sv" data-identifier="item_1"></span>
-<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-<!-- LikeBtn.com END -->
+<textarea name="" id="new-comment" cols="60" rows="5"></textarea>
+<br>
+<button id="btn-post">Post</button>
+<script>
+    // Step 1: Add an event listener to the "Post" button
+document.getElementById("btn-post").addEventListener("click", function () {
+    // This line sets up an event listener for the click event on the "Post" button.
+    // When the button is clicked, the function provided as the second argument will run.
 
+    // Step 2: Get the comment from the textarea
+    const newComment = document.getElementById("new-comment").value;
+
+    // Step 3: Create a new paragraph element for the comment
+    const commentContainer = document.getElementById("comment-container");
+    const commentElement = document.createElement("p");
+    commentElement.innerText = newComment;
+
+    // Step 4: Append the comment to the comment container
+    commentContainer.appendChild(commentElement);
+
+    // Clear the textarea after posting the comment
+    document.getElementById("new-comment").value = "";
+});
+</script>
+
+<div class="like-outer">
+  <div id="like-counter" class="like-area">
+   <ul>
+    <li>
+     <a>
+      <i class="far fa-thumbs-up"></i>
+      <i class="fas fa-thumbs-up"></i>
+      <span class="like-no">25</span>
+     </a>
+    </li>
+    <li>
+     <a>
+      <i class="far fa-thumbs-down"></i>
+      <i class="fas fa-thumbs-down"></i>
+      <span class="like-no">20</span>
+     </a>
+    </li>
+   </ul>
+  </div>
  </div>
 
 </div>
