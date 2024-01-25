@@ -1,22 +1,14 @@
-var color1 = document.getElementsByClassName('fa-thumbs-up')[0];
-var color2 = document.getElementsByClassName('fa-thumbs-down')[0];
-
-function like() {
-  if(color1.style.color == "blue") {
-    color1.style.color = "black";
-  } else {
-    color1.style.color = "blue";
-  }
-  color2.style.color = "black";
-}
-
-function dislike() {
-  if (color2.style.color == "blue") {
-    color2.style.color = "black";
-  } else {
-    color2.style.color = "blue";
-  }
-  color1.style.color = "black";
-}
-
-}
+var clicks = 0; 
+$(".like_cont").click(function(e) {
+    if ($(this).html() == "Like") {
+        $(this).html('Unlike').removeClass('like_cont').addClass('unlike_cont');
+        clicks++; 
+       $('.likecount').html(clicks);
+    }
+    else {
+    $(this).html('Like').removeClass('unlike_cont').addClass('like_cont');
+        clicks--; 
+        $('.likecount').html(clicks);
+    }
+    return false;
+});

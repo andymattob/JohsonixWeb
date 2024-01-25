@@ -55,21 +55,12 @@ color: #c2babac7;
     background-color: grey;
   }
 
-  button{
-    cursor: pointer;
-    outline: 0;
-    color: #AAA;
-  
+  .like-action span.like_cont::before {
+    font-family: "FontAwesome";
+    content: "\f08a";
   }
   
-  .btn:focus {
-    outline: none;
-  }
-  
-  .green{
-    color: green;
-  }
-  
-  .red{
-    color: red;
+  .like-action span.unlike_cont::before {
+      font-family: "FontAwesome";
+      content: "\f004";
   }
