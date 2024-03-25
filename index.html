@@ -1,3 +1,36 @@
+<?php 
+        // connect to the database
+        $con = mysqli_connect('localhost', 'root', '', 'like');
+
+        if (isset($_POST['liked'])) {
+                $postid = $_POST['postid'];
+                $result = mysqli_query($con, "SELECT * FROM posts WHERE id=$postid");
+                $row = mysqli_fetch_array($result);
+                $n = $row['likes'];
+
+                mysqli_query($con, "INSERT INTO likes (userid, postid) VALUES (1, $postid)");
+                mysqli_query($con, "UPDATE posts SET likes=$n+1 WHERE id=$postid");
+
+                echo $n+1;
+                exit();
+        }
+        if (isset($_POST['unliked'])) {
+                $postid = $_POST['postid'];
+                $result = mysqli_query($con, "SELECT * FROM posts WHERE id=$postid");
+                $row = mysqli_fetch_array($result);
+                $n = $row['likes'];
+
+                mysqli_query($con, "DELETE FROM likes WHERE postid=$postid AND userid=1");
+                mysqli_query($con, "UPDATE posts SET likes=$n-1 WHERE id=$postid");
+                
+                echo $n-1;
+                exit();
+        }
+
+        // Retrieve posts from the database
+        $posts = mysqli_query($con, "SELECT * FROM posts");
+?>
+
 <html>
 <body>
     <link rel="icon" type="image/x-con" href="">
@@ -43,39 +76,31 @@
 </head>
 <body>
 
-<!-- LikeBtn.com BEGIN -->
-<span class="likebtn-wrapper" data-theme="black" data-lang="sv" data-identifier="item_1" data-share_enabled="false" data-tooltip_enabled="false"></span>
-<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-<!-- LikeBtn.com END -->
+  <?php while ($row = mysqli_fetch_array($posts)) { ?>
 
-<h1>Kommentera produkt</h1>
-<div id="comment-container">
-    <!-- Existing comments will go here -->
-</div>
-<textarea name="" id="new-comment" cols="60" rows="5"></textarea>
-<br>
-<button id="btn-post">Skicka</button>
-<script>
-    // Step 1: Add an event listener to the "Post" button
-document.getElementById("btn-post").addEventListener("click", function () {
-    // This line sets up an event listener for the click event on the "Post" button.
-    // When the button is clicked, the function provided as the second argument will run.
+    <div class="post">
+            <?php echo $row['text']; ?>
 
-    // Step 2: Get the comment from the textarea
-    const newComment = document.getElementById("new-comment").value;
+            <div style="padding: 2px; margin-top: 5px;">
+            <?php 
+                    // determine if user has already liked this post
+                    $results = mysqli_query($con, "SELECT * FROM likes WHERE userid=1 AND postid=".$row['id']."");
 
-    // Step 3: Create a new paragraph element for the comment
-    const commentContainer = document.getElementById("comment-container");
-    const commentElement = document.createElement("p");
-    commentElement.innerText = newComment;
+                    if (mysqli_num_rows($results) == 1 ): ?>
+                            <!-- user already likes post -->
+                            <span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+                            <span class="like hide fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span> 
+                    <?php else: ?>
+                            <!-- user has not yet liked post -->
+                            <span class="like fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span> 
+                            <span class="unlike hide fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+                    <?php endif ?>
 
-    // Step 4: Append the comment to the comment container
-    commentContainer.appendChild(commentElement);
+                    <span class="likes_count"><?php echo $row['likes']; ?> likes</span>
+            </div>
+    </div>
 
-    // Clear the textarea after posting the comment
-    document.getElementById("new-comment").value = "";
-});
-</script>
+<?php } ?>
 </div>
 </div>
 <h3>@Copyright 2023</h3>
