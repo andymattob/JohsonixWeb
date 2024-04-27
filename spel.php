@@ -10,14 +10,14 @@
 
     <ul id="menu">     
       <li>
-        <a href="index.html">Hem</a>   
+        <a href="index.php">Hem</a>   
       </li> 
       <li>
-        <a href="about.html">Om oss</a>   
+        <a href="about.php">Om oss</a>   
       </li>
       
       <li>
-        <a href="spel.html">Spel</a>   
+        <a href="spel.php">Spel</a>   
       </li>
     
       <li>
@@ -34,7 +34,9 @@
       
       <li class="menu_right"><a href="#">Logga in</a></li>
     </ul>
+<div class="front">
 <h1>Spel</h1>
+</div>
 <h3>@Copyright 2023</h3>
 </body>
 </html>
