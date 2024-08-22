@@ -25,7 +25,7 @@
   </li>
 
   <li>
-    <a href="#ddd">Pinterest</a>   
+    <a href="">Pinterest</a>   
   </li>
 
   <li class="menu_right"><a href="#">Registera</a></li>
